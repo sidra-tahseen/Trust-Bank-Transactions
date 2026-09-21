@@ -1,0 +1,18 @@
+Bangalore-Koramangala	Weekday Volume: 411   | Weekend Volume: 95    | Total Volume: 506   | Weekend Share:  18.77%
+Bangalore-Whitefield	Weekday Volume: 381   | Weekend Volume: 76    | Total Volume: 457   | Weekend Share:  16.63%
+Chennai-TNagar	Weekday Volume: 276   | Weekend Volume: 81    | Total Volume: 357   | Weekend Share:  22.69%
+Delhi-CP	Weekday Volume: 361   | Weekend Volume: 86    | Total Volume: 447   | Weekend Share:  19.24%
+Delhi-Saket	Weekday Volume: 324   | Weekend Volume: 53    | Total Volume: 377   | Weekend Share:  14.06%
+Hyderabad-Banjara	Weekday Volume: 469   | Weekend Volume: 106   | Total Volume: 575   | Weekend Share:  18.43%
+Hyderabad-Gachibowli	Weekday Volume: 399   | Weekend Volume: 86    | Total Volume: 485   | Weekend Share:  17.73%
+Mumbai-Andheri	Weekday Volume: 329   | Weekend Volume: 83    | Total Volume: 412   | Weekend Share:  20.15%
+Mumbai-Bandra	Weekday Volume: 308   | Weekend Volume: 76    | Total Volume: 384   | Weekend Share:  19.79%
+Pune-Kothrud	Weekday Volume: 287   | Weekend Volume: 60    | Total Volume: 347   | Weekend Share:  17.29%
+	
+==========================================================================================================	
+PROBLEM 4 ANALYTICAL VERDICT & SUMMARY:	
+==========================================================================================================	
+1. HIGHEST WEEKEND TRANSACTION VOLUME	: Hyderabad-Banjara with 106 transactions
+2. HIGHEST WEEKDAY TRANSACTION VOLUME	: Hyderabad-Banjara with 469 transactions
+3. HIGHEST WEEKEND PROPORTION / SHARE	: Chennai-TNagar with 22.69% weekend transactions
+==========================================================================================================	
