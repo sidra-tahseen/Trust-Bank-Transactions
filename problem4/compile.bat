@@ -26,8 +26,8 @@ if exist "C:\Users\HP\Tools\jdk-17\bin\javac.exe" (
     if exist "%JAVA_HOME%\bin\javac.exe" set JAVAC_CMD="%JAVA_HOME%\bin\javac.exe"
 )
 
-echo Compiling Java source files using %JAVAC_CMD% (Target: Java 17)...
-%JAVAC_CMD% --release 17 -cp "%HADOOP_CP%" -d bin src\trustbank\problem4\*.java
+echo Compiling Java source files using %JAVAC_CMD% (Target: Java 8 / Docker & Host Compatible)...
+%JAVAC_CMD% --release 8 -cp "%HADOOP_CP%" -d bin src\trustbank\problem4\*.java
 
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Compilation failed!

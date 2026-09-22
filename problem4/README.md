@@ -21,7 +21,8 @@ problem4/
 ├── bin/                                     # Compiled Java bytecode (.class files)
 ├── problem4.jar                             # Precompiled executable MapReduce JAR
 ├── compile.bat                              # Batch script to compile sources and build JAR
-├── run.bat                                  # Batch script to execute job on local or HDFS dataset
+├── run.bat                                  # 1-Click script to run on local Windows Hadoop
+├── run_docker.bat                           # 1-Click script to run on Docker Hadoop Cluster (HDFS + YARN)
 ├── output/
 │   ├── part-r-00000                         # Final MapReduce output file
 │   ├── job_execution_log.txt                # Full Hadoop execution stdout/stderr log
@@ -39,21 +40,26 @@ problem4/
 compile.bat
 ```
 
-### 2. Run MapReduce Job
+### 2. Run MapReduce Job (Local Mode)
 ```bat
-run.bat ..\dataset\transactions.csv output
+run.bat
 ```
 
-### 3. Run with Hadoop CLI
+### 3. Run MapReduce Job on Docker Cluster (HDFS + YARN)
+```bat
+run_docker.bat
+```
+
+### 4. Run with Hadoop CLI Manually
 ```bat
 hadoop jar problem4.jar trustbank.problem4.WeekendWeekdayDriver ..\dataset\transactions.csv output
 ```
 
-### 4. Run on Hadoop Distributed Cluster (HDFS / YARN)
+### 5. Run on Hadoop Distributed Cluster (HDFS / YARN)
 ```bash
 hdfs dfs -put ../dataset/transactions.csv /trustbank/dataset/
-hadoop jar problem4.jar trustbank.problem4.WeekendWeekdayDriver /trustbank/dataset/transactions.csv /trustbank/output/p4
-hdfs dfs -cat /trustbank/output/p4/part-r-00000
+hadoop jar problem4.jar trustbank.problem4.WeekendWeekdayDriver /trustbank/dataset/transactions.csv /trustbank/output
+hdfs dfs -cat /trustbank/output/part-r-00000
 ```
 
 ---
