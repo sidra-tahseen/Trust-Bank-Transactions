@@ -873,62 +873,7 @@ The Reducer performs aggregation after Hadoop groups records by date.
 This allows Hadoop to distribute the processing of large transaction datasets across multiple machines.
 
 ---
-
-# 13. Key Points for Viva
-
-### What is the purpose of Problem 5?
-
-To calculate the number of high-value transactions for each day.
-
-### What is a high-value transaction?
-
-A transaction whose amount is greater than `50,000`.
-
-### What does the Mapper output?
-
-```text
-date → 1
-```
-
-### Why does the Mapper output 1?
-
-Each qualifying transaction represents one high-value transaction.
-
-### What does Shuffle and Sort do?
-
-It groups all values belonging to the same date.
-
-### What does the Reducer do?
-
-It sums all the `1`s for each date.
-
-### What is the final output?
-
-```text
-date → number of high-value transactions
-```
-
-### Why is only the date extracted?
-
-Because the problem requires a day-wise trend rather than a time-wise trend.
-
-### What happens to invalid amounts?
-
-Invalid numerical values are ignored using `NumberFormatException`.
-
-### Why is the output directory deleted?
-
-Hadoop does not normally allow a MapReduce job to write into an existing output directory.
-
----
-
-# 14. One-Minute Explanation
-
-Problem 5 uses Hadoop MapReduce to find the day-wise trend of high-value bank transactions. The Mapper reads each transaction and skips the CSV header. It extracts the transaction amount and checks whether it is greater than 50,000. If it is high-value, the Mapper extracts the date from the timestamp and emits the date as the key and `1` as the value. Hadoop then performs Shuffle and Sort and groups all the values belonging to the same date. The Reducer adds these values and produces the total number of high-value transactions for each day. The Driver configures the Mapper, Reducer, input path, output path, and submits the job to Hadoop.
-
----
-
-# 15. Program Flow
+# 13. Program Flow
 
 ```text
                  INPUT CSV
