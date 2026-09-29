@@ -71,7 +71,7 @@ The two jobs are chained using Hadoop `JobControl`, ensuring that Job 2 starts o
 | 2 | 160124733293 | MANANYA YEGGE | Problem 5: Day-wise trend in flagged transactions |
 | 3 | 160124733315 | BOYA ABHINAY KUMAR | Problem 3: Average transaction amount by type |
 | 4 | 160124733327 | LENKAPOTHULA NITHISH KUMAR GOUD | Problem 4: Weekend vs weekday transaction volume |
-| 5 | 160124733285 | DODLA AKSHITHA |  Problem 1: Total transaction amount by branch |
+| 5 | 160124733285 | DODLA AKSHITHA | Problem 1: Total transaction amount by branch |
 
 ---
 
@@ -102,6 +102,12 @@ The MapReduce implementation consists of:
 | Mumbai-Andheri | 6,545,737.35 |
 | Mumbai-Bandra | 6,465,969.89 |
 | Pune-Kothrud | 5,926,916.09 |
+
+### Execution Output
+
+![P1 Execution Output](screenshots/P1.1.png)
+
+![P1 Branch-wise Output](screenshots/P1.2.png)
 
 The MapReduce job processed the complete dataset and produced results for all 10 branches.
 
@@ -150,6 +156,10 @@ The jobs are connected using Hadoop `JobControl`.
 
 **Total high-value transactions: 108**
 
+### Execution Output
+
+![P2 Pipeline Execution and Output](screenshots/P2.1.png)
+
 ---
 
 # Problem 3 – Average Transaction Amount by Type
@@ -177,6 +187,12 @@ The MapReduce implementation:
 | Transfer | 18,377.92 |
 | Withdrawal | 17,640.68 |
 
+### Execution Output
+
+![P3 Execution Output](screenshots/P3.1.png)
+
+![P3 Average Transaction Output](screenshots/P3.2.png)
+
 Detailed implementation is available in the [P3 README](p3/README.md).
 
 ---
@@ -202,6 +218,12 @@ A Combiner performs local aggregation before the shuffle phase, while the Reduce
 - **Highest weekday transaction volume:** Hyderabad-Banjara – 469
 - **Highest weekend share:** Chennai-TNagar – 22.69%
 
+### Execution Output
+
+![P4 Execution Output](screenshots/P4.1.png)
+
+![P4 Weekend Weekday Output](screenshots/P4.2.png)
+
 ---
 
 # Problem 5 – Day-wise Trend of High-Value Transactions
@@ -226,6 +248,14 @@ The Reducer counts the high-value transactions for each date.
 - **Total high-value transactions:** 108
 - **Peak daily high-value transaction count:** 7
 - **Peak date:** 2026-06-25
+
+### Execution Output
+
+![P5 Execution Output](screenshots/P5.1.png)
+
+![P5 Day-wise Output](screenshots/P5.2.png)
+
+![P5 Day-wise Output Continued](screenshots/P5.3.png)
 
 The output provides the complete day-wise distribution of flagged transactions across the reporting period.
 
@@ -281,6 +311,10 @@ The Hive implementation produced the same 10 branch-wise counts as Problem 2.
 
 **Observed Hive execution time: 45.295 seconds.**
 
+### Hive Execution and Output
+
+![Hive Execution and Output](screenshots/P6.1.png)
+
 ---
 
 ## Pig Implementation
@@ -321,6 +355,10 @@ The Pig implementation performs the same analysis using Pig Latin.
 The Pig YARN application completed successfully with `FinalApplicationStatus=SUCCEEDED`.
 
 The generated HDFS output contained the same branch-wise results as Hive and MapReduce.
+
+### Pig Execution and Output
+
+![Pig Execution and Output](screenshots/P6.2.png)
 
 ---
 
@@ -411,6 +449,20 @@ Hive and Pig were executed against the same HDFS dataset so that their results c
     │       ├── IsHighValue.java
     │       ├── p2_hive.sql
     │       └── p2_pig.pig
+    │
+    ├── screenshots/
+    │   ├── P1.1.png
+    │   ├── P1.2.png
+    │   ├── P2.1.png
+    │   ├── P3.1.png
+    │   ├── P3.2.png
+    │   ├── P4.1.png
+    │   ├── P4.2.png
+    │   ├── P5.1.png
+    │   ├── P5.2.png
+    │   ├── P5.3.png
+    │   ├── P6.1.png
+    │   └── P6.2.png
     │
     ├── .gitignore
     └── README.md
