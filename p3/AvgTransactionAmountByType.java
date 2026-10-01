@@ -125,11 +125,23 @@ public class AvgTransactionAmountByType {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        Path inputPath = new Path(args[0]);
-        Path outputPath = new Path(args[1]);
+        int inputIdx = 0;
+        int outputIdx = 1;
+        if (args.length >= 3 && args[0].endsWith("AvgTransactionAmountByType")) {
+            inputIdx = 1;
+            outputIdx = 2;
+        }
+
+        Path inputPath = new Path(args[inputIdx]);
+        Path outputPath = new Path(args[outputIdx]);
 
         FileInputFormat.addInputPath(job, inputPath);
         FileOutputFormat.setOutputPath(job, outputPath);
+
+        if (outputPath.getName().endsWith(".csv") || outputPath.equals(inputPath)) {
+            System.err.println("Error: Output path cannot be a CSV file or match the input path: " + outputPath);
+            System.exit(1);
+        }
 
         FileSystem fs = outputPath.getFileSystem(conf);
         if (fs.exists(outputPath)) {

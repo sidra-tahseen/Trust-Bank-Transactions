@@ -366,3 +366,9 @@ withdrawal	17640.68
 3. **Deposits Represent the Majority of Transaction Volume (1,563 txns)**:
    - Deposits occur most frequently (35.9% of all transaction occurrences) but with the lowest ticket average (₹16,621.64), reflecting recurring retail customer salary and savings deposits.
    - *Recommendation*: Offer automated recurring deposit (RD) and wealth investment sweep-in facilities to convert idle retail deposits into high-yield banking assets.
+
+### How to run
+
+```bat
+cd c:\Users\abhin\Desktop\Trust-Bank-Transactions\p3; mvn clean package; docker exec hadoop-p3 bash -c "rm -rf /tmp/p3_output && hadoop jar /workspace/Desktop/Trust-Bank-Transactions/p3/target/trustbank-p3.jar trustbank.p3.AvgTransactionDriver /workspace/Desktop/Trust-Bank-Transactions/dataset/transactions.csv /tmp/p3_output"; docker cp hadoop-p3:/tmp/p3_output/. ./output/; docker exec hadoop-p3 cat /tmp/p3_output/part-r-00000
+```

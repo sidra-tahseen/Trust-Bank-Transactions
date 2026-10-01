@@ -35,6 +35,12 @@ problem4/
 
 ## Quick Start Commands
 
+### Custom Commands
+```bat
+cd c:\Users\abhin\Desktop\Trust-Bank-Transactions\p4; docker exec hadoop-p3 bash -c "rm -rf /tmp/p4_output && hadoop jar /workspace/Desktop/Trust-Bank-Transactions/p4/problem4.jar trustbank.problem4.WeekendWeekdayDriver /workspace/Desktop/Trust-Bank-Transactions/dataset/transactions.csv /tmp/p4_output"; docker cp hadoop-p3:/tmp/p4_output/. ./output/; docker exec hadoop-p3 cat /tmp/p4_output/part-r-00000
+```
+
+
 ### 1. Compile & Package
 ```bat
 compile.bat

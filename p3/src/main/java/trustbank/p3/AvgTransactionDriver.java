@@ -51,14 +51,26 @@ public class AvgTransactionDriver extends Configured implements Tool {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
+        int inputIdx = 0;
+        int outputIdx = 1;
+        if (args.length >= 3 && args[0].endsWith("AvgTransactionDriver")) {
+            inputIdx = 1;
+            outputIdx = 2;
+        }
+
         // Set input and output paths
-        Path inputPath = new Path(args[0]);
-        Path outputPath = new Path(args[1]);
+        Path inputPath = new Path(args[inputIdx]);
+        Path outputPath = new Path(args[outputIdx]);
 
         FileInputFormat.addInputPath(job, inputPath);
         FileOutputFormat.setOutputPath(job, outputPath);
 
-        // Delete output directory if it exists to allow re-runs
+        // Delete output directory if it exists to allow re-runs (safeguard against deleting datasets)
+        if (outputPath.getName().endsWith(".csv") || outputPath.equals(inputPath)) {
+            System.err.println("Error: Output path cannot be a CSV file or match the input path: " + outputPath);
+            return -1;
+        }
+
         FileSystem fs = outputPath.getFileSystem(conf);
         if (fs.exists(outputPath)) {
             System.out.println("Notice: Output directory " + outputPath + " already exists. Deleting it for fresh execution...");
